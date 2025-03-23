@@ -111,5 +111,5 @@ function agendarNotificacao(horario, dia, atividade) {
 }
 
 // Agendando uma notificação de exemplo para 'Estudar JavaScript' no próximo Sábado às 07:30
-agendarNotificacao('14:25', 'Domingo', 'Estudar JavaScript');
+agendarNotificacao('14:45', 'Domingo', 'Estudar JavaScript');
 
