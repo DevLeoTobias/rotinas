@@ -52,3 +52,64 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+
+
+//notificacao
+
+// Verifica se a API de Notificação está disponível
+if ("Notification" in window) {
+    // Solicita permissão para enviar notificações
+    Notification.requestPermission().then(function(permission) {
+        if (permission === "granted") {
+            console.log("Permissão concedida!");
+        } else {
+            console.log("Permissão negada.");
+        }
+    });
+}
+
+// Função para mostrar uma notificação
+function mostrarNotificacao(titulo, corpo) {
+    if (Notification.permission === "granted") {
+        new Notification(titulo, {
+            body: corpo
+            
+        });
+    }
+}
+
+// Função para criar uma notificação para compromissos
+function notificarCompromisso(horario, dia, atividade) {
+    if (Notification.permission === "granted") {
+        const titulo = `Lembrete: ${atividade}`;
+        const corpo = `Você tem um compromisso de ${atividade} no dia ${dia} às ${horario}.`;
+        mostrarNotificacao(titulo, corpo);
+    }
+}
+
+// Função para agendar a notificação de um compromisso
+function agendarNotificacao(horario, dia, atividade) {
+    const now = new Date();
+
+    // Parse da hora do compromisso para um objeto Date
+    const horarioArray = horario.split(":");
+    const dataCompromisso = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(horarioArray[0]), parseInt(horarioArray[1]));
+
+    // Verifica se a data do compromisso já passou para agendar para o próximo dia, se necessário
+    if (dataCompromisso <= now) {
+        dataCompromisso.setDate(dataCompromisso.getDate() + 1); // Define o compromisso para o próximo dia
+    }
+
+    const delay = dataCompromisso - now;
+    console.log(`Agendando notificação para ${atividade} em ${dataCompromisso.toLocaleString()}`);
+
+    // Agenda a notificação
+    setTimeout(() => {
+        notificarCompromisso(horario, dia, atividade);
+    }, delay);
+}
+
+// Agendando uma notificação de exemplo para 'Estudar JavaScript' no próximo Sábado às 07:30
+agendarNotificacao('14:25', 'Domingo', 'Estudar JavaScript');
+
