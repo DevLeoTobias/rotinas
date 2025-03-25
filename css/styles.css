@@ -11203,10 +11203,39 @@ body {
 }
 
 /*tabela*/
-.table-responsive{
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    width: 100%;
-    height: 100%;
+
+/* Ajusta o tamanho da tabela para ocupar a largura máxima da tela */
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+}
+
+/* Define o tamanho das colunas para melhorar a visualização */
+#tabela-compromissos th, 
+#tabela-compromissos td {
+  padding: 15px; /* Aumenta o espaço interno para melhor legibilidade */  
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+  text-align: center; /* Centraliza o conteúdo */
+  white-space: nowrap; /* Evita quebra de linha desnecessária */
+}
+
+/* Ajusta a largura da coluna de horário */
+#tabela-compromissos th:first-child, 
+#tabela-compromissos td:first-child {
+  width: 280px; /* Aumenta a largura da coluna de horários */
+}
+
+/* Ajusta a largura das colunas dos dias da semana */
+#tabela-compromissos th:not(:first-child), 
+#tabela-compromissos td:not(:first-child) {
+  width: 550px; /* Garante que cada dia da semana tenha mais espaço */
+}
+
+/* Estiliza a tabela para telas pequenas */
+@media (max-width: 768px) {
+  #tabela-compromissos th, 
+  #tabela-compromissos td {
+      font-size: 1rem; /* Reduz um pouco o tamanho da fonte em telas menores */
+      padding: 10px; /* Ajusta o padding para telas pequenas */
+  }
 }

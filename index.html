@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="Agendar Rotinas&Estudo" />
+        <meta name="author" content="Leonardo" />
+
         <title>Rotinas&Estudo WeB</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -50,7 +51,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">Um Projeto para ajudar você criar uma rotina</h2>
-                        <p class="text-white-50">
+                        <p class="text-light">
                             Esse Projeto você poderá criar sua rotina de estudo e ter acesso a ela em qualquer lugar, com qualquer <strong>dispositivo</strong>.
                             e ajudará você a manter sua rotina e organizar o seu tempo no dia a dia.
                             <br>
@@ -62,14 +63,14 @@
             </div>
         </section>
         <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <!-- Featured Project Row -->
-                <div class="row gx-3 mb-4 mb-lg-5 justify-content-center">                    
-                    <div class="col-12 col-lg-10">
+       <section class="projects-section bg-light" id="projects">
+            <div class="container-fluid px-4 px-lg-5 m-0">
+                <!-- Tabela de Compromissos -->
+                <div class="row justify-content-center">
+                    <div class="col-12">
                         <div class="featured-text p-1">
                             <div class="table-responsive">
-                                <table id="tabela-compromissos" class="table table-striped table-bordered text-center w-100">
+                                <table id="tabela-compromissos" class="table table-striped table-bordered text-center">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>Horário</th>
@@ -82,36 +83,136 @@
                                             <th>Sábado</th>
                                         </tr>
                                     </thead>
+
                                     <tbody id="corpo-tabela">
-                                        <tr id="#">
+                                        <tr>
                                             <td><strong>06:00 - 16:00</strong></td>                                           
-                                            <td data-dia="domingo">Descanso</td>
-                                            <td data-dia="segunda">Trabalho</td>
-                                            <td data-dia="terca"  >Trabalho</td>
-                                            <td data-dia="quarta" >Trabalho</td>
-                                            <td data-dia="quinta" >Trabalho</td>
-                                            <td data-dia="sexta"  >Trabalho</td>
-                                            <td data-dia="sabado" >Descanso</td>
+                                            <td data-dia="domingo">Descanso
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-domingo">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="segunda">
+                                                Trabalho
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-segunda">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="terca">
+                                                Trabalho
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-terca">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quarta">
+                                                Trabalho
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quarta">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quinta">
+                                                Trabalho
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quinta">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sexta">
+                                                Trabalho
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sexta">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sabado">Descanso
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sabado">                                                   
+                                                  </div>
+                                            </td>
                                         </tr>
-                                        <tr id="#">
+                                        <tr>
                                             <td><strong>07:30 - 11:00</strong></td>
-                                            <td data-dia="domingo">Fazer o Projeto</td>
-                                            <td data-dia="segunda">-</td>
-                                            <td data-dia="terca"  >-</td>
-                                            <td data-dia="quarta" >-</td>
-                                            <td data-dia="quinta" >-</td>
-                                            <td data-dia="sexta"  >-</td>
-                                            <td data-dia="sabado" >Estudar JavaScript</td>
+                                            <td data-dia="domingo">Fazer o Projeto
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-domingo-1">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="segunda">-
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-segunda-2">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="terca">
+                                                -
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-terca-3">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quarta">
+                                                -
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quinta-4">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quinta">
+                                                -
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quinta-5">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sexta">
+                                                -
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sexta-6">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sabado">
+                                                Estudar JavaScript
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sabado-7">                                                   
+                                                  </div>
+                                            </td>
                                         </tr>
-                                        <tr id="#">
+                                        <tr>
                                             <td><strong>18:30 - 22:00</strong></td>
-                                            <td data-dia="domingo">-</td>
-                                            <td data-dia="segunda">Senai (PHP)</td> 
-                                            <td data-dia="Academia"  >Academia</td>
-                                            <td data-dia="quarta" >Senai (PHP)</td>
-                                            <td data-dia="quinta" >Academia</td>
-                                            <td data-dia="sexta"  >Academia</td>
-                                            <td data-dia="sabado" ></td>
+                                            <td data-dia="domingo">-
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-domingo-8">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="segunda">
+                                                Senai (PHP)
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-segunda-9">                                                   
+                                                  </div>
+                                            </td>
+                                            <td data-dia="terca">
+                                                Academia
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-terca-10">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quarta">
+                                                Senai (PHP)
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quinta-11">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="quinta">
+                                                Academia
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-quinta-12">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sexta">
+                                                Academia
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sexta-13">                                                    
+                                                  </div>
+                                            </td>
+                                            <td data-dia="sabado"> -
+                                                <div class="form-check form-switch ">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="checkbox-sabado-14">                                                   
+                                                  </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -120,17 +221,13 @@
                     </div>
                 </div>             
             </div>
-        </section>          
+        </section>
+               
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Rotinas & Estudo WEB 2025</div></footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.9/push.min.js"></script>
 

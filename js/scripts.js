@@ -52,60 +52,92 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// daqui pra cima eh bootstrap
+//
+//
+//
+// para manter os check boxes marcados
+document.addEventListener("DOMContentLoaded", function () {
+    // Seleciona todos os checkboxes da tabela
+    const checkboxes = document.querySelectorAll('.form-check-input');
 
+    // Função para carregar o estado salvo no localStorage
+    function carregarEstadoCheckboxes() {
+        checkboxes.forEach(checkbox => {
+            const id = checkbox.id;
+            const estadoSalvo = localStorage.getItem(id);
+
+            if (estadoSalvo === "true") {
+                checkbox.checked = true;
+                checkbox.closest("td").classList.add("table-success"); // Muda a cor da célula
+            } else {
+                checkbox.checked = false;
+                checkbox.closest("td").classList.remove("table-success");
+            }
+        });
+    }
+
+    // Função para salvar o estado dos checkboxes no localStorage
+    function salvarEstadoCheckboxes() {
+        checkboxes.forEach(checkbox => {
+            localStorage.setItem(checkbox.id, checkbox.checked);
+        });
+    }
+
+    // Evento para salvar sempre que o usuário clicar no checkbox
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            salvarEstadoCheckboxes();
+
+            // Altera a cor da célula quando marcado/desmarcado
+            if (this.checked) {
+                this.closest("td").classList.add("table-success");
+            } else {
+                this.closest("td").classList.remove("table-success");
+            }
+        });
+    });
+
+    // Carregar estado ao iniciar a página
+    carregarEstadoCheckboxes();
+});
 
 
 //notificacao
 
-// Verifica se a API de Notificação está disponível
-if ("Notification" in window) {
-    // Solicita permissão para enviar notificações (agora é feito apenas uma vez)
-    Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-            console.log("Permissão concedida!");
+// Solicitar permissão para enviar notificações
+if (Notification.permission !== 'granted') {
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            console.log('Permissão para notificações concedida.');
         } else {
-            console.log("Permissão negada.");
+            console.log('Permissão para notificações negada.');
         }
     });
 }
 
-// Função para mostrar uma notificação
-function mostrarNotificacao(titulo, corpo) {
-    if (Notification.permission === "granted") {
-        new Notification(titulo, {
-            body: corpo
+// Função para disparar uma notificação
+function enviarNotificacao() {
+    if (Notification.permission === 'granted') {
+        new Notification("Atividade Pendentes", {
+            body: "Você tem atividades para concluir, não se esqueça de completar!"
+            
         });
+    } else {
+        console.log("Notificações não permitidas.");
     }
 }
 
-// Função para criar uma notificação para compromissos
-function notificarCompromisso(horario, dia, atividade) {
-    const titulo = `Lembrete: ${atividade}`;
-    const corpo = `Você tem um compromisso de ${atividade} no dia ${dia} às ${horario}.`;
-    mostrarNotificacao(titulo, corpo);
-}
+// Testar a notificação ao carregar a página
+window.onload = () => {
+    enviarNotificacao();  // Envia uma notificação assim que a página carregar
+};
 
-// Função para agendar a notificação de um compromisso
-function agendarNotificacao(horario, dia, atividade) {
-    const now = new Date();
 
-    // Parse da hora do compromisso para um objeto Date
-    const horarioArray = horario.split(":");
-    const dataCompromisso = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(horarioArray[0]), parseInt(horarioArray[1]));
-
-    // Verifica se a data do compromisso já passou para agendar para o próximo dia, se necessário
-    if (dataCompromisso <= now) {
-        dataCompromisso.setDate(dataCompromisso.getDate() + 1); // Define o compromisso para o próximo dia
-    }
-
-    const delay = dataCompromisso - now;
-    console.log(`Agendando notificação para ${atividade} em ${dataCompromisso.toLocaleString()}`);
-
-    // Agenda a notificação
+//Checando o código de envio da notificação
+window.onload = () => {
+    // Espera a página carregar completamente antes de enviar a notificação
     setTimeout(() => {
-        notificarCompromisso(horario, dia, atividade);
-    }, delay);
-}
-
-// Exemplo de agendamento de notificação para 'Estudar JavaScript' no próximo Sábado às 15:00
-agendarNotificacao('16:00', 'Sábado', 'Estudar JavaScript');
+        enviarNotificacao();  // Envia a notificação após o carregamento
+    }, 2000);  // Atraso de 2 segundos para garantir que tudo carregue primeiro
+};
