@@ -126,11 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (permission === "granted") {
             console.log("Permissão para notificações concedida.");
 
-            // Obter Token FCM
-            messaging.getToken({ vapidKey: "SUA_CHAVE_VAPID" })
+            // Obter Token FCM com sua chave VAPID
+            messaging.getToken({ vapidKey: "BFR7bfDqqgBENKOH4AoNmJCpZ_7k1TPan2MQhDB2_M_k_PA9ilI7Lkh7Fy8QA1sa-9p0q5_kdfxFt5fcTiZVQr4" })
                 .then(token => {
                     if (token) {
                         console.log("Token FCM:", token);
+                        // Você pode enviar esse token para o seu backend para notificar o usuário
                     } else {
                         console.log("Nenhum token disponível.");
                     }
