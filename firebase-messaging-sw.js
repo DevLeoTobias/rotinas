@@ -1,6 +1,7 @@
 // Importa o Firebase Messaging
 // Importa o Firebase Messaging
-importScripts('https://www.gstatic.com/firebasejs/8.0.0/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js');
+
 
 // Inicializa o Firebase Messaging
 const messaging = firebase.messaging();
