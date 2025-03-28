@@ -152,3 +152,12 @@ messaging.onMessage(payload => {
         icon: payload.notification.icon || "https://via.placeholder.com/150"
     });
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://raw.githubusercontent.com/DevLeoTobias/rotinas/refs/heads/main/firebase-messaging-sw.js')
+    .then(function(registration) {
+        console.log('Service Worker registrado com sucesso:', registration);
+    }).catch(function(error) {
+        console.log('Erro ao registrar o Service Worker:', error);
+    });
+}
