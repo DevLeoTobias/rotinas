@@ -154,12 +154,11 @@ messaging.onMessage(payload => {
     });
 });
 
-if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://devleotobias.github.io/rotinas/firebase-messaging-sw.js')
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://devleotobias.github.io/rotinas/firebase-messaging-sw.js', { scope: '/rotinas/' })
     .then(function(registration) {
         console.log('Service Worker registrado com sucesso:', registration);
     }).catch(function(error) {
-        console.log('Erro ao registrar Service Worker:', error);
-
+        console.log('Erro ao registrar o Service Worker:', error);
     });
 }
