@@ -114,7 +114,7 @@ const firebaseConfig = {
     messagingSenderId: "1069538363889",
     appId: "1:1069538363889:web:4cbc577834e288a0bf5c50",
     measurementId: "G-J0XB507S21"
-  };
+};
 
 // Inicializa o Firebase
 firebase.initializeApp(firebaseConfig);
@@ -125,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
             console.log("Permissão para notificações concedida.");
-
             // Obter Token FCM com sua chave VAPID
             messaging.getToken({ vapidKey: "BFR7bfDqqgBENKOH4AoNmJCpZ_7k1TPan2MQhDB2_M_k_PA9ilI7Lkh7Fy8QA1sa-9p0q5_kdfxFt5fcTiZVQr4" })
                 .then(token => {
@@ -139,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch(error => {
                     console.error("Erro ao obter token:", error);
                 });
-
         } else {
             console.log("Notificações não permitidas.");
         }
@@ -149,10 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Receber notificações enquanto a aba estiver aberta
 messaging.onMessage(payload => {
     console.log("Notificação recebida:", payload);
-
     new Notification(payload.notification.title, {
         body: payload.notification.body,
         icon: payload.notification.icon || "https://via.placeholder.com/150"
     });
 });
-
