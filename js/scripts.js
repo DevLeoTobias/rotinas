@@ -104,40 +104,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //notificacao
+//firebase
+// Certifique-se de carregar o Firebase antes de usar
+const firebaseConfig = {
+    apiKey: "AIzaSyAQq7LCv-QzeInj4OESLBIbuQ2QMjhj0aU",
+    authDomain: "rotinafinal.firebaseapp.com",
+    projectId: "rotinafinal",
+    storageBucket: "rotinafinal.firebasestorage.app",
+    messagingSenderId: "1069538363889",
+    appId: "1:1069538363889:web:4cbc577834e288a0bf5c50",
+    measurementId: "G-J0XB507S21"
+  };
 
-// Solicitar permissão para enviar notificações
-if (Notification.permission !== 'granted') {
+// Inicializa o Firebase
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+// Solicita permissão para notificações
+document.addEventListener("DOMContentLoaded", () => {
     Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-            console.log('Permissão para notificações concedida.');
+        if (permission === "granted") {
+            console.log("Permissão para notificações concedida.");
+
+            // Obter Token FCM
+            messaging.getToken({ vapidKey: "SUA_CHAVE_VAPID" })
+                .then(token => {
+                    if (token) {
+                        console.log("Token FCM:", token);
+                    } else {
+                        console.log("Nenhum token disponível.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao obter token:", error);
+                });
+
         } else {
-            console.log('Permissão para notificações negada.');
+            console.log("Notificações não permitidas.");
         }
     });
-}
+});
 
-// Função para disparar uma notificação
-function enviarNotificacao() {
-    if (Notification.permission === 'granted') {
-        new Notification("Atividade Pendentes", {
-            body: "Você tem atividades para concluir, não se esqueça de completar!"
-            
-        });
-    } else {
-        console.log("Notificações não permitidas.");
-    }
-}
+// Receber notificações enquanto a aba estiver aberta
+messaging.onMessage(payload => {
+    console.log("Notificação recebida:", payload);
 
-// Testar a notificação ao carregar a página
-window.onload = () => {
-    enviarNotificacao();  // Envia uma notificação assim que a página carregar
-};
+    new Notification(payload.notification.title, {
+        body: payload.notification.body,
+        icon: payload.notification.icon || "https://via.placeholder.com/150"
+    });
+});
 
-
-//Checando o código de envio da notificação
-window.onload = () => {
-    // Espera a página carregar completamente antes de enviar a notificação
-    setTimeout(() => {
-        enviarNotificacao();  // Envia a notificação após o carregamento
-    }, 2000);  // Atraso de 2 segundos para garantir que tudo carregue primeiro
-};
